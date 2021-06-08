@@ -4,12 +4,11 @@ from extens18 import ConvertionException, CryptoConverter
 
 bot = telebot.TeleBot(TOKEN)
 
-@bot.message_handler(commands=['start', 'help'])
 def help(message: telebot.types.Message):
-    bot.send_message(message.chat.id, 'Привет, я помогу узнать курс валют')
-    text = 'Чтобы начать работу введите команду боту в следующем формате: \n<Сколько (целое число)>  \
-<из какой валюты> \
-<в какую валюту> \ Увидеть список доступных валют:/values'
+    text = 'Чтобы начать работу введите команду боту в следующем формате через пробел: \n<Сколько (целое число)>  \
+    <из какой валюты> \ <в какую валюту> \
+     Если хотите узнать курс, то введите две валюты  \
+    Увидеть список доступных валют:/values'
     bot.reply_to(message, text)
 
 
@@ -24,8 +23,10 @@ def values(message: telebot.types.Message):
 def convert(message: telebot.types.Message):
     try:
         values = message.text.split(' ')
-        # values[0] = values[0].replace(',', ".")  # Замена запятой на точку для обработки <float>
-        # bot.send_message(message.chat.id, {values[0]})
+        
+        if len(values) == 2:
+           values.insert(0, '1')
+        
         if len(values) != 3:
             raise ConvertionException("Проверьте ввод данных, для справки введите команду /help.")
 
