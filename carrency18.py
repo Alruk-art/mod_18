@@ -32,7 +32,7 @@ def convert(message: telebot.types.Message):
 
         
         amount, quote, base = values
-        total_base = round((CryptoConverter.convert(quote, base, amount))*int(amount),3)
+        total_base = round((CryptoConverter.get_price(quote, base, amount))*int(amount),3)
 
     except ConvertionException as e:
         bot.reply_to(message, f'Ошибка пользователя. \n{e}')
