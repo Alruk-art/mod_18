@@ -30,7 +30,7 @@ def convert(message: telebot.types.Message):
         if len(values) != 3:
             raise ConvertionException("Проверьте ввод данных, для справки введите команду /help.")
 
-        values[0] = values[0].replace(',', ".")  # Замена запятой на точку для обработки <float>
+        
         amount, quote, base = values
         total_base = round((CryptoConverter.convert(quote, base, amount))*int(amount),3)
 
