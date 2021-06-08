@@ -1,0 +1,11 @@
+в файле extensions 
+
+total_base = json.loads(r.content)["rates"][keys[base]] # вствлен ["rates"]
+total_base = json.loads(r.content)[carrency[base]]
+
+
+в файле config
+
+'доллар': 'ЮСД' # неправильная валюта
+'доллар': 'USD' # ожидаемый результат
+
