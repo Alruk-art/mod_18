@@ -9,3 +9,8 @@ total_base = json.loads(r.content)[carrency[base]]
 'доллар': 'ЮСД' # неправильная валюта
 'доллар': 'USD' # ожидаемый результат
 
+сайт для конвертации дает ошибку 
+f'https://api.exchangeratesapi.io/latest?base={quote_ticker}&symbols={base_ticker}')
+я заменил на рекомендованный сайт и всё заработало
+f'https://min-api.cryptocompare.com/data/price?fsym={quote_ticker}&tsyms={base_ticker}')
+
